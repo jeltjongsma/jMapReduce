@@ -1,9 +1,13 @@
 package	jMapReduce
 
-type FilterFunc[T] func(T) bool
+import (
+	"github.com/jeltjongsma/jMapReduce/src/types"
+)
 
-func Filter[T any](s JSlice[T], f FilterFunc[T]) JSlice[T] {
-	newJSlice := make([]T, 0, s.capacity)
+type FilterFunc[T any] func(T) bool
+
+func Filter[T any](s types.JSlice[T], f FilterFunc[T]) types.JSlice[T] {
+	newJSlice := make([]T, 0, s.Capacity())
 	for _, elem := range s {
 		if f(elem) {
 			newJSlice = append(newJSlice, elem)

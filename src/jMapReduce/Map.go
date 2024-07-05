@@ -6,8 +6,8 @@ import (
 
 type MapFunc[T, U any] func(T) U
 
-func Map[T, U any](s JSlice[T], f MapFunc[T, U]) JSlice[U] {
-	newJSlice := make([]U, s.size, s.capacity)
+func Map[T, U any](s types.JSlice[T], f MapFunc[T, U]) types.JSlice[U] {
+	newJSlice := make([]U, s.Size(), s.Capacity())
 	for i, elem := range s {
 		newJSlice[i] = f(elem)
 	}

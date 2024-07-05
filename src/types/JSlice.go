@@ -2,6 +2,14 @@ package types
 
 type JSlice[T any] []T
 
+func (s JSlice[T]) Size() int {
+	return len(s)
+}
+
+func (s JSlice[T]) Capacity() int {
+	return cap(s)
+}
+
 // Code for v0.2
 // type JSlice[T any] struct {
 // 	partitions 		[]Partition[T]
